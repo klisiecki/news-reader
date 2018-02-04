@@ -1,6 +1,21 @@
-version '0.1.0'
+buildscript {
+    ext.spring_boot_version = '1.5.10.RELEASE'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+    }
+}
 
 apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'news-reader'
+    version =  '0.1.0'
+}
 
 sourceCompatibility = 1.8
 
@@ -9,5 +24,7 @@ repositories {
 }
 
 dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
