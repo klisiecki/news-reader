@@ -1,5 +1,6 @@
 package pl.klisiecki.newsreader
 
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -7,18 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.test.util.ReflectionTestUtils.setField
 import org.springframework.test.web.client.ExpectedCount
 import org.springframework.test.web.client.MockRestServiceServer
+import org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo
+import org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.support.RestGatewaySupport
 import pl.klisiecki.newsreader.model.NewsHeadlines
 import pl.klisiecki.newsreader.model.NewsHeadlines.Article
 import pl.klisiecki.newsreader.model.NewsHeadlines.Article.Source
-
 import java.util.Arrays.asList
-import org.junit.Assert.assertEquals
-import org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo
-import org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
@@ -88,5 +88,14 @@ class NewsApiRetrieverTest {
         mockServer!!.verify()
 
         assertEquals(expectedHeadlines, headlines)
+    }
+
+    @Test
+    fun prepareUrl() {
+        setField(retriever, "apiUrl", "https://example.com/endpoint")
+        setField(retriever, "apiKey", "testKey")
+
+        assertEquals("https://example.com/endpoint?country=uk&category=sport&apiKey=testKey",
+                retriever!!.prepareUrl("uk", "sport"))
     }
 }
