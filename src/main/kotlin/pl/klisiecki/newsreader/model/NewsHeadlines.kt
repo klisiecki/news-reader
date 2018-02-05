@@ -1,6 +1,9 @@
 package pl.klisiecki.newsreader.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import java.time.ZonedDateTime.parse
+import java.time.format.DateTimeFormatter.ofPattern
+
 
 /**
  * Represents response of /top-headlines from News API
@@ -32,7 +35,7 @@ data class NewsHeadlines(
                 author = author ?: "",
                 title = title ?: "",
                 description = description ?: "",
-                date = publishedAt ?: "", //TODO date conversion to "yyyy-MM-dd" format
+                date = publishedAt?.let { d -> parse(d).toLocalDate().format(ofPattern("yyyy-MM-dd")) } ?: "",
                 sourceName = source?.name ?: "",
                 articleUrl = url ?: "",
                 imageUrl = urlToImage ?: ""

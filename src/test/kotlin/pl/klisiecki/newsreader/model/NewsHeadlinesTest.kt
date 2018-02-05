@@ -37,8 +37,8 @@ class NewsHeadlinesTest {
                                 "2017-03-04T17:52:00Z")))
 
         val myNews = MyNews(null, null,
-                listOf(MyNews.Article("a1", "t1", "d1", "2018-02-05T17:51:00Z", "BBC", "ex1.com", "ex1.com/1.jpg"),
-                        MyNews.Article("a2", "t2", "d2", "2017-03-04T17:52:00Z", "CNN", "ex2.com", "ex2.com/1.jpg")))
+                listOf(MyNews.Article("a1", "t1", "d1", "2018-02-05", "BBC", "ex1.com", "ex1.com/1.jpg"),
+                        MyNews.Article("a2", "t2", "d2", "2017-03-04", "CNN", "ex2.com", "ex2.com/1.jpg")))
         assertEquals(myNews, headlines.toMyNews(null, null))
     }
 }
