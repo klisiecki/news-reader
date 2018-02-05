@@ -8,24 +8,42 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class NewsHeadlines(
-        val status: String = "",
-        val totalResults: Int = 0,
+        val status: String? = null,
+        val totalResults: Int? = null,
         val articles: List<Article> = emptyList()) {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     data class Article(
-            val source: Source = Source("", ""),
+            val source: Source? = null,
             val author: String? = null,
-            val title: String = "",
-            val description: String = "",
-            val url: String = "",
+            val title: String? = null,
+            val description: String? = null,
+            val url: String? = null,
             val urlToImage: String? = null,
-            val publishedAt: String = "") {
+            val publishedAt: String? = null) {
 
         @JsonIgnoreProperties(ignoreUnknown = true)
         data class Source(
                 val id: String? = null,
-                val name: String = ""
+                val name: String? = null
         )
+
+        fun toMyArticle() = MyNews.Article(
+                author = author ?: "",
+                title = title ?: "",
+                description = description ?: "",
+                date = publishedAt ?: "", //TODO date conversion to "yyyy-MM-dd" format
+                sourceName = source?.name ?: "",
+                articleUrl = url ?: "",
+                imageUrl = urlToImage ?: ""
+        )
+
     }
+
+    fun toMyNews(country: String?, category: String?) = MyNews(
+            country = country,
+            category = category,
+            articles = articles.map(Article::toMyArticle)
+    )
+
 }
