@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>News Reader - demo app</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="webjars/jquery/2.0.3/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+    <link rel="stylesheet" href="webjars/bootstrap/4.0.0/css/bootstrap.min.css" type="text/css"/>
+
+</head>
+<body>
+<main role="main" class="container">
+    <div class="container">
+        <div class="row">
+            <div class="well"><h1>News Reader</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group form-inline">
+                    <label for="countryInput">Country:</label>
+                    <input id="countryInput" type="text" class="form-control" value="pl">
+                </div>
+
+                <div class="form-group form-inline">
+                    <label for="categoryInput">Category:</label>
+                    <input id="categoryInput" type="text" class="form-control" value="technology">
+                </div>
+                <button id="fetchArticles" class="btn btn-primary" type="button" onclick="fetchArticles()">
+                    Fetch articles
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="well" id="articles"></div>
+        </div>
+
+    </div>
+</main>
+</body>
+</html>
