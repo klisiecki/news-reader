@@ -1,6 +1,7 @@
 # news-reader
 
-Demo web application for browsing news. It allows to browse top headlines which can be filtered by language and category.
+Demo web application for browsing news. 
+It allows to browse top headlines which can be filtered by language and category.
 
 ## Technical description
 
@@ -15,14 +16,37 @@ List of languages, frameworks etc. used in this project:
 * Spring Boot
 * Gradle
 * JUnit
-* TODO
+* Bootstrap
+* JQuery
 
-On the backend side, *news-reader* uses Java and Kotlin languages. Altough mixing these two may not be the best option for new projects
-(you could go all-Kotlin ;), this project presents how existing Java applications may benefit from using Kotlin. 
+On the backend side, *news-reader* uses Java and Kotlin languages. 
+Although mixing these two may not be the best option for new projects (you could go all-Kotlin ;), 
+this project presents how existing Java applications may benefit from using Kotlin. 
+
+As of the frontend, this project uses JQuery and Bootstrap. 
 
 ### REST API specification
 
-TODO
+*news-reader* provides one simple endpoint: 
+
+**GET /news/{lang}/{category}/**
+
+which returns following response:
+```json
+{
+  country: string?,
+  category: string?,
+  articles: {
+    author: string,
+    title: string,
+    description: string,
+    date: string(yyyy-MM-dd),
+    sourceName: string,
+    articleUrl: string,
+    imageUrl: string
+  }[]
+}
+```
 
 ## Building and running 
 
@@ -33,4 +57,13 @@ To start *news-reader* from console, it is recommended to use Gradle Wrapper (pr
 Use this command to run the application directly:
 ````
 ./gradlew bootRun
+````
+
+Then you can open <http://localhost:8080/> in the browser or use provided REST API
+
+
+To create executable JAR and run it, use following commands:
+````
+./gradlew build
+java -jar build/libs/news-reader-0.1.0.jar
 ````
