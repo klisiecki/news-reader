@@ -1,3 +1,5 @@
+$(document).ready(fetchArticles);
+
 function fetchArticles() {
     fetchArticlesFor($("#countryInput").val(), $("#categoryInput").val())
 }

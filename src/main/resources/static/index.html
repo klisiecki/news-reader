@@ -20,15 +20,74 @@
             <div class="col">
                 <div class="form-group form-inline">
                     <label for="countryInput">Country:</label>
-                    <input id="countryInput" type="text" class="form-control" value="pl">
+                    <select onchange="fetchArticles()" id="countryInput" type="text" class="form-control">
+                        <option>ae</option>
+                        <option>ar</option>
+                        <option>at</option>
+                        <option>au</option>
+                        <option>be</option>
+                        <option>bg</option>
+                        <option>br</option>
+                        <option>ca</option>
+                        <option>ch</option>
+                        <option>cn</option>
+                        <option>co</option>
+                        <option>cu</option>
+                        <option>cz</option>
+                        <option>de</option>
+                        <option>eg</option>
+                        <option>fr</option>
+                        <option>gb</option>
+                        <option>gr</option>
+                        <option>hk</option>
+                        <option>hu</option>
+                        <option>id</option>
+                        <option>ie</option>
+                        <option>il</option>
+                        <option>in</option>
+                        <option>it</option>
+                        <option>jp</option>
+                        <option>kr</option>
+                        <option>lt</option>
+                        <option>lv</option>
+                        <option>ma</option>
+                        <option>mx</option>
+                        <option>my</option>
+                        <option>ng</option>
+                        <option>nl</option>
+                        <option>no</option>
+                        <option>nz</option>
+                        <option>ph</option>
+                        <option selected="selected">pl</option>
+                        <option>pt</option>
+                        <option>ro</option>
+                        <option>rs</option>
+                        <option>ru</option>
+                        <option>sa</option>
+                        <option>se</option>
+                        <option>sg</option>
+                        <option>si</option>
+                        <option>sk</option>
+                        <option>th</option>
+                        <option>tr</option>
+                        <option>tw</option>
+                        <option>ua</option>
+                        <option>us</option>
+                        <option>ve</option>
+                        <option>za</option>                    </select>
                 </div>
                 <div class="form-group form-inline">
                     <label for="categoryInput">Category:</label>
-                    <input id="categoryInput" type="text" class="form-control" value="technology">
+                    <select onchange="fetchArticles()" id="categoryInput" type="text" class="form-control">
+                        <option>business</option>
+                        <option>entertainment</option>
+                        <option>general</option>
+                        <option>health</option>
+                        <option>science</option>
+                        <option>sports</option>
+                        <option selected="selected">technology</option>
+                    </select>
                 </div>
-                <button id="fetchArticles" class="btn btn-primary" type="button" onclick="fetchArticles()">
-                    Fetch articles
-                </button>
             </div>
         </div>
         <div class="row" id="articles" ></div>
