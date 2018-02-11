@@ -11,7 +11,9 @@ import pl.klisiecki.newsreader.model.NewsHeadlines;
 @Component
 public class NewsApiRetriever {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    private static final Logger log = LoggerFactory.getLogger(NewsApiRetriever.class);
+
+    private static final String PARAMS_TEMPLATE = "%s?country=%s&category=%s&apiKey=%s";
 
     private final RestTemplate restTemplate;
 
@@ -32,7 +34,6 @@ public class NewsApiRetriever {
     }
 
     protected String prepareUrl(String country, String category) {
-        final String template = "%s?country=%s&category=%s&apiKey=%s";
-        return String.format(template, apiUrl, country, category, apiKey);
+        return String.format(PARAMS_TEMPLATE, apiUrl, country, category, apiKey);
     }
 }
