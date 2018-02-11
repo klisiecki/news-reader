@@ -6,7 +6,7 @@ It allows to browse top headlines which can be filtered by language and category
 ## Technical description
 
 *news-reader* consumes the REST API provided by [newsapi.org](https://newsapi.org/docs/endpoints/top-headlines) 
-and provides similiar REST endpoint.
+and provides similar REST endpoint.
 
 ### Software stack
 
