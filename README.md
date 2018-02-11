@@ -32,7 +32,7 @@ As of the frontend, this project uses JQuery and Bootstrap.
 **GET /news/{lang}/{category}/**
 
 which returns following response:
-```json
+```js
 {
   country: string?,
   category: string?,
